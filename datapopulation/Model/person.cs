@@ -12,5 +12,6 @@ namespace datapopulation.Model
        public string lastName { get; set; }
        public DateTime DateofBirth { get; set; }
        public string info { get; set; }
+       
     }
 }

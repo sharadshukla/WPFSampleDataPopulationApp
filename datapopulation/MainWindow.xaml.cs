@@ -23,13 +23,16 @@ namespace datapopulation
 
     public partial class MainWindow : Window
     {
+        // List to populate the grid
         List<person> ListofPersons;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            var ListofPersons = new List<person>();
+            // Populating the data
+
+             ListofPersons = new List<person>();
             ListofPersons.Add(new person(){firstName ="Sharad",
                 lastName="Shukla", DateofBirth= new DateTime(1983,06,13), info="Hardware/Software Programming"});
            
@@ -43,8 +46,13 @@ namespace datapopulation
                 lastName = "Jung", DateofBirth = new DateTime(1982, 10, 15), info = "Firmware Designing"});
 
             this.sharadGrid.ItemsSource = ListofPersons;
-            
-            
+
+            // Selecting the People with knowledge of Hardware
+            var hardwareQ = from p in ListofPersons
+                            where p.info.ToLower().Contains("hardware")
+                            select p;
+
+            this.sharadGrid_LINQ.ItemsSource = hardwareQ.ToList();
         }
     }
 }
